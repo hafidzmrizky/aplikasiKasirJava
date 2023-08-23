@@ -1,5 +1,4 @@
-package org.smkbinainformatika.hafidz;
-
+package com.smkbinainformatika.kasir.hafidz;
 /**
  * Hello world!
  *

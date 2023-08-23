@@ -1,4 +1,4 @@
-package org.smkbinainformatika.hafidz;
+package com.smkbinainformatika.kasir.hafidz;
 
 import static org.junit.Assert.assertTrue;
 
