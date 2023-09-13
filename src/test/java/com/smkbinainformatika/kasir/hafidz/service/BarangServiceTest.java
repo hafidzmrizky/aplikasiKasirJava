@@ -7,17 +7,11 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 class BarangServiceTest {
 
-    @Test
-    @Order(2)
-    void getBarangList() {
-        List<Barang> barangList = BarangService.getInstance().getBarangList();
-        assertEquals(barangList.size(), 2);
-    }
-
-    @Test
+    @org.junit.jupiter.api.Test
     @Order(1)
     void addBarang() {
         Barang laptop = new Barang();
@@ -27,9 +21,18 @@ class BarangServiceTest {
         BarangService.getInstance().addBarang(laptop);
 
         Barang mouse = new Barang();
-        mouse.setKodeBarang("M0001");
+        mouse.setKodeBarang("MO001");
         mouse.setNamaBarang("Mouse");
         mouse.setHargaBarang(100000);
         BarangService.getInstance().addBarang(mouse);
     }
+   
+    @Test
+    @Order(2)
+    void getBarangList() {
+        List<Barang> barangList = BarangService.getInstance().getBarangList();
+        assertEquals(barangList.size(),2);
+    }
+
+   
 }
