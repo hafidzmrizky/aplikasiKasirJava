@@ -16,8 +16,8 @@ public class BarangService {
 
     private BarangService() {
         try {
-            barangServiceReader = new FileReader("barang.txt");
             barangServiceWriter = new FileWriter("barang.txt");
+            barangServiceReader = new FileReader("barang.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }

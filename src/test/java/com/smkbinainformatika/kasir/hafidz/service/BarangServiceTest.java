@@ -1,8 +1,10 @@
 package com.smkbinainformatika.kasir.hafidz.service;
 
 import com.smkbinainformatika.kasir.hafidz.model.Barang;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.List;
 
