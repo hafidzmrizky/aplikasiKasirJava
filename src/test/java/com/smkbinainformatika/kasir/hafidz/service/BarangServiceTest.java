@@ -29,7 +29,7 @@ class BarangServiceTest {
         BarangService.getInstance().addBarang(mouse);
 
         Barang laptopGaming = new Barang();
-        laptopGaming.setKodeBarang("LP0002");
+        laptopGaming.setKodeBarang("LP002");
         laptopGaming.setNamaBarang("Laptop Gaming");
         laptopGaming.setHargaBarang(20000000);
         BarangService.getInstance().addBarang(laptopGaming);
