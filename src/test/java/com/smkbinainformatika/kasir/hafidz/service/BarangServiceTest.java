@@ -27,14 +27,28 @@ class BarangServiceTest {
         mouse.setNamaBarang("Mouse");
         mouse.setHargaBarang(100000);
         BarangService.getInstance().addBarang(mouse);
+
+        Barang laptopGaming = new Barang();
+        laptopGaming.setKodeBarang("LP0002");
+        laptopGaming.setNamaBarang("Laptop Gaming");
+        laptopGaming.setHargaBarang(20000000);
+        BarangService.getInstance().addBarang(laptopGaming);
     }
    
     @Test
     @Order(2)
     void getBarangList() {
         List<Barang> barangList = BarangService.getInstance().getBarangList();
-        assertEquals(barangList.size(),2);
+        assertEquals(barangList.size(),3);
     }
 
-   
+    @Test
+    @Order(3)
+    void findByName() {
+        List<Barang> resultList = BarangService.getInstance().findByName("Laptop");
+        assertEquals(resultList.size(), 2);
+        // Berlaku untuk pengecekan dengan mengambil satu sample data untuk memastikan: System.out.println(resultList.toArray()[0]);
+    }
+
+
 }
