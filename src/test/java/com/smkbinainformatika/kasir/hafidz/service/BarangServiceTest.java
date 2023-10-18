@@ -9,6 +9,8 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -79,6 +81,36 @@ class BarangServiceTest {
         laptopGaming.setDateCreated(new Date());
         laptopGaming.setLastModified(new Date());
         barangDao.save(laptopGaming);
+    }
+
+    @Test
+    @Order(5)
+    void getDataById() {
+        BarangDao barangDao = new BarangDao();
+        Optional<Barang> barang1 = barangDao.get(1);
+        barang1.ifPresent(new Consumer<Barang>() {
+            @Override
+            public void accept(Barang barang) {
+                assertEquals(barang.getNamaBarang(), "Laptop");
+                assertEquals(barang.getKodeBarang(), "LP001");
+            }
+        });
+        Optional<Barang> barang2 = barangDao.get(2);
+        barang2.ifPresent(new Consumer<Barang>() {
+            @Override
+            public void accept(Barang barang) {
+                assertEquals(barang.getNamaBarang(), "Mouse");
+                assertEquals(barang.getKodeBarang(), "MO001");
+            }
+        });
+        Optional<Barang> barang3 = barangDao.get(3);
+        barang3.ifPresent(new Consumer<Barang>() {
+            @Override
+            public void accept(Barang barang) {
+                assertEquals(barang.getNamaBarang(), "Laptop Gaming");
+                assertEquals(barang.getKodeBarang(), "LP002");
+            }
+        });
     }
 
 
