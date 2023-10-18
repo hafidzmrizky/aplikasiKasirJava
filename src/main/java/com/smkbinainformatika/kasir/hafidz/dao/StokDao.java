@@ -84,6 +84,5 @@ public class StokDao implements Dao<Stok, Integer> {
 
     @Override
     public void delete(Stok stok) {
-
     }
 }
