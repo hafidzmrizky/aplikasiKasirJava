@@ -80,7 +80,6 @@ public class StokDao implements Dao<Stok, Integer> {
 
     @Override
     public void update(Stok stok) {
-
     }
 
     @Override
