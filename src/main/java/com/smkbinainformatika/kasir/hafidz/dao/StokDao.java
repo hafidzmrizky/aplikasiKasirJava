@@ -1,6 +1,5 @@
 package com.smkbinainformatika.kasir.hafidz.dao;
 
-import com.smkbinainformatika.kasir.hafidz.model.Barang;
 import com.smkbinainformatika.kasir.hafidz.model.Stok;
 
 import java.sql.Connection;
