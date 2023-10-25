@@ -2,7 +2,6 @@ package com.smkbinainformatika.kasir.hafidz.dao;
 
 import com.smkbinainformatika.kasir.hafidz.model.Barang;
 
-import javax.swing.text.html.Option;
 import java.sql.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -17,7 +16,30 @@ public class BarangDao implements Dao<Barang, Integer> {
 
     @Override
     public Optional<Barang> get(int id) {
-        return Optional.empty();
+        return connection.flatMap(conn -> {
+            Optional<Barang> barang = Optional.empty();
+            String sql = "SELECT * FROM barang WHERE barang_id = ?";
+            try {
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    String kodeBarang = rs.getString("kode_barang");
+                    String namaBarang = rs.getString("nama_barang");
+                    int hargaBarang = rs.getInt("harga_barang");
+
+                    Barang barangResult = new Barang();
+                    barangResult.setKodeBarang(kodeBarang);
+                    barangResult.setNamaBarang(namaBarang);
+                    barangResult.setHargaBarang(hargaBarang);
+
+                    barang = Optional.of(barangResult);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return barang;
+        });
     }
 
     @Override
