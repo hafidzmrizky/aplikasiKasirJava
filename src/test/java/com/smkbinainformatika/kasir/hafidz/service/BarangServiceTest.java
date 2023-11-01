@@ -132,5 +132,48 @@ class BarangServiceTest {
         });
     }
 
+    @Test
+    @Order(7)
+    void deleteBarang() {
+        BarangDao barangDao = new BarangDao();
+        Barang laptop = new Barang();
+        laptop.setKodeBarang("LP001");
+        barangDao.delete(laptop);
+        Optional<Barang> barang1 = barangDao.get(1);
+        assertEquals(barang1.isPresent(), false);
+    }
 
+    @Test
+    @Order(8)
+    void searchBarang() {
+        BarangDao barangDao = new BarangDao();
+        Barang bluetoothKeyboard = new Barang();
+        bluetoothKeyboard.setKodeBarang("BK001");
+        bluetoothKeyboard.setNamaBarang("Bluetooth Keyboard");
+        bluetoothKeyboard.setHargaBarang(500000);
+        bluetoothKeyboard.setDateCreated(new Date());
+        bluetoothKeyboard.setLastModified(new Date());
+        barangDao.save(bluetoothKeyboard);
+
+        Barang bluetoothMouse = new Barang();
+        bluetoothMouse.setKodeBarang("BM001");
+        bluetoothMouse.setNamaBarang("Bluetooth Mouse");
+        bluetoothMouse.setHargaBarang(300000);
+        bluetoothMouse.setDateCreated(new Date());
+        bluetoothMouse.setLastModified(new Date());
+        barangDao.save(bluetoothMouse);
+
+        Barang mechanicalKeyboard = new Barang();
+        mechanicalKeyboard.setKodeBarang("KB001");
+        mechanicalKeyboard.setNamaBarang("Mechanical Keyboard Redragon K630W RGB 60% Wireless");
+        mechanicalKeyboard.setHargaBarang(500000);
+        mechanicalKeyboard.setDateCreated(new Date());
+        mechanicalKeyboard.setLastModified(new Date());
+        barangDao.save(mechanicalKeyboard);
+
+        assertEquals(barangDao.search("Mecha").size(), 1);
+        assertEquals(barangDao.search("Key").size(), 2);
+        assertEquals(barangDao.search("Bl").size(), 2);
+
+    }
 }

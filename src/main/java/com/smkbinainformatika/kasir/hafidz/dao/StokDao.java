@@ -1,5 +1,6 @@
 package com.smkbinainformatika.kasir.hafidz.dao;
 
+import com.smkbinainformatika.kasir.hafidz.model.Barang;
 import com.smkbinainformatika.kasir.hafidz.model.Stok;
 
 import java.sql.Connection;
@@ -7,6 +8,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -84,5 +86,13 @@ public class StokDao implements Dao<Stok, Integer> {
 
     @Override
     public void delete(Stok stok) {
+    }
+
+    @Override
+    public Collection<Stok> search(String keyword) {
+        Collection<Stok> stokList = new LinkedList<>();
+
+
+        return stokList;
     }
 }
