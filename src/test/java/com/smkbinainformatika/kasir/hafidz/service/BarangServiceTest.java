@@ -113,5 +113,24 @@ class BarangServiceTest {
         });
     }
 
+    @Test
+    @Order(6)
+    void updateBarangByKodeBarang() {
+        BarangDao barangDao = new BarangDao();
+        Barang laptopGaming = new Barang();
+        laptopGaming.setKodeBarang("LP002");
+        laptopGaming.setNamaBarang("Laptop Gaming Ryzen 3 RTX 4090 TI 32GB RAM");
+        laptopGaming.setHargaBarang(14000000);
+        barangDao.update(laptopGaming);
+        Optional<Barang> barang = barangDao.get(3);
+        barang.ifPresent(new Consumer<Barang>() {
+            @Override
+            public void accept(Barang barang) {
+                assertEquals("Laptop Gaming Ryzen 3 RTX 4090 TI 32GB RAM", barang.getNamaBarang());
+                assertEquals(14000000, barang.getHargaBarang());
+            }
+        });
+    }
+
 
 }
